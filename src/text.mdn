@@ -1,0 +1,63 @@
+    <li key={index}  style={{ textDecoration: items.completed ? "line-through" : "none" } }>{items.text} 
+    <span className="handle-button">
+      <div className="button-column" >
+      <button onClick={()=>props.complete(index)} >Complete</button>
+      <button onClick={()=>props.delete(index)} >Delete</button>
+    </div>
+    </span>
+    </li>
+
+function ListItem({item, complete, delete}) {
+    return (
+        <li style={{ textDecoration: item.completed ? "line-through" : "none" } }>
+            <span>{ item.text }</span> 
+            <div className="handle-button">
+                <div className="button-column" >
+                    <button onClick={()=>props.complete(item.id)} >Complete</button>
+                    <button onClick={()=>props.delete(item.id)} >Delete</button>
+                </div>
+            </div>
+        </li>
+    )
+}
+
+
+
+
+
+
+
+
+
+
+
+import React from "react" 
+
+export default function List(props){
+  
+  const taskElement=props.tasks.map((items,index)=>(
+    <li key={index}  style={{ textDecoration: items.completed ? "line-through" : "none" } }>{items.text} 
+    <span className="handle-button">
+      <div className="button-column" >
+      <button onClick={()=>props.complete(index)} >Complete</button>
+      <button onClick={()=>props.delete(index)} >Delete</button>
+    </div>
+    </span>
+    </li>
+  ))
+
+    return(
+        <div>
+            <h1>List of the Tasks:</h1>
+            {/* <ol>{taskElement} </ol> */}
+            {props.taskElement.map(task => (
+              <ListItem
+                key={task.id}
+                item={task}
+                complete={props.complete}
+                delete={props.delete}
+              />
+            ))}
+        </div>
+    )
+}
