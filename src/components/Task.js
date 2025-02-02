@@ -46,9 +46,10 @@ export default function Task() {
     );
   }
 
-  function deleteTask(id) {
-    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
+  function deleteTask(id){
+    setTasks((prevTask)=>prevTask.filter((task)=>task.id!==id))
   }
+ 
 
   //filtering items
   const filterTask=tasks.filter(task => {
@@ -85,7 +86,7 @@ export default function Task() {
       <h1>List of the Tasks:</h1>
       {tasks.length===0?(
         <p className="display-noTask">No Tasks Left</p>
-      ):
+      ):  
       <List 
       tasks={filterTask} 
       complete={handleComplete}
@@ -107,63 +108,4 @@ export default function Task() {
 
 
 
-// import React from "react";
-// import List  from "./List";
-// import Forms from "./Forms"
-
-
-// const initialTasks=[ 
-//     { id:0, text: "Drinking Coffee", completed: false},
-//     { id:1, text: "Making Exercise", completed: false},
-//     { id:2, text: "Reading Book", completed: false}
-//    ]
-
-//  export default  function Task(){
-
-//     const [task, setTask]=React.useState(initialTasks)
-    
-//           function addNewTask(formData){
-//             const newTask=formData.get("task")
-            
-//             setTask(prevTask=>[...prevTask, { id:Date.now().length+1 ,text:newTask, completed:false} ])
-//           }
-    
-    
-
-//           function handleComplete(id) {
-            
-//             setTask(prevTask=>prevTask.map(task=>task.id===id ?{...task, completed : !task.completed }: task));
-//           }
-        
-//           function deleteTask (id){
-//             setTask(prevTask=>prevTask.filter(task=>task.id!==id))
-//         }
-
-      
-      
-//     return(
-//         <div>
-//             <Forms addItem={addNewTask} />
-            
-//             <List 
-//               tasks={task}
-//               complete={handleComplete}
-//               deleted={deleteTask}
-//             />
-//         </div>
-//     )
-// }
-
-
-
-
-
-// const filteredTasks = tasks.filter((task) => {
-//     if (filter === "completed") {
-//       return task.completed;
-//     } else if (filter === "active") {
-//       return !task.completed;
-//     }
-//     return true; // Show all tasks when filter is "all"
-//   });
   
